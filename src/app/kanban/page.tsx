@@ -5,6 +5,7 @@ import Card from './components/column';
 
 const HomePage: React.FC = () => {
   const [columns, setColumns] = useState([]);
+  
 
   return (
     <div>

@@ -1,95 +1,69 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
 
-export default function Home() {
+import React from 'react';
+import { Box, Card, CardActionArea, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import Link from 'next/link';
+
+const HomePage = () => {
+  // Function to generate a random number between min and max
+  const getRandomNumber = (min: number, max: number) => {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  // Function to generate a random Unsplash image URL
+  const getRandomImageUrl = () => {
+    const imageId = getRandomNumber(1, 1000);
+    return `https://picsum.photos/400/300?random=${imageId}`;
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <Container maxWidth="sm">
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <Card sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <Link href="https://kanban-board-navy-theta.vercel.app/">
+              <CardMedia
+                component="img"
+                height="140"
+                image={getRandomImageUrl()}
+                alt="Kanban Board V1"
+              />
+            </Link>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Kanban Board Version 1
+              </Typography>
+              
+            </CardContent>
+          </CardActionArea>
+        </Card>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <Card sx={{ maxWidth: 345, marginLeft: '20px' }}>
+        <Link href="/kanban">
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          <CardActionArea>
+              <CardMedia
+                component="img"
+                height="140"
+                image={getRandomImageUrl()}
+                alt="Kanban Board V2"
+              />
+            
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                Kanban Board Version 2
+              </Typography>
+              
+            </CardContent>
+          </CardActionArea>
+          </Link>
+        </Card>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      </Box>
+    </Container>
+  );
+};
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+export default HomePage;
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+
