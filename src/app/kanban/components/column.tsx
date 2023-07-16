@@ -17,6 +17,7 @@ import "./column.css";
 interface CardProps {
   title: string;
   description: string;
+  onMouseEnter?: () => void;
 }
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -28,9 +29,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const StyledCard = styled(MuiCard)`
   width: 300px;
+  margin: 7px;
 `;
 
-const Card: React.FC<CardProps> = ({ title, description }) => {
+const Column: React.FC<CardProps> = ({ title, description, onMouseEnter}) => {
   const [open, setOpen] = React.useState(false);
   //const [title, setTitle] = React.useState("");
 
@@ -39,6 +41,7 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
   ) => {
     setOpen(true);
   };
+
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -66,7 +69,7 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
           variant="outlined"
         />
         <div className="formbuttons">
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} onMouseEnter={onMouseEnter}>
             Add Task
           </Button>
           <Button variant="contained">Cancel</Button>
@@ -86,4 +89,4 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
   );
 };
 
-export default Card;
+export default Column;
